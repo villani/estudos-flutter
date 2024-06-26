@@ -7,28 +7,31 @@ main() => runApp(
             title: Text('Usando Containers'),
             backgroundColor: Colors.blueAccent,
           ),
-          body: Container(
-            width: double.infinity,
-            margin: EdgeInsets.all(10.0),
-            padding: EdgeInsets.all(20.0),
-            decoration: BoxDecoration(
-              color: Color(0xFF8CE1F8),
-              boxShadow: [
-                BoxShadow(
-                  offset: Offset(5, 5),
-                  blurRadius: 5,
-                )
-              ],
-              border: Border.all(
-                color: Color(0xFF51A3D6),
-                width: 2,
+          body: Stack(
+            children: [
+              Container(
+                width: 300,
+                height: 300,
+                color: Colors.green,
               ),
-              borderRadius: BorderRadius.all(
-                Radius.circular(10),
-              )
-            ),
-            child: Text(
-                'Este é um texto muito, muito grande, grande demais para caber em uma tela normal em uma única linha!'),
+              Align(
+                alignment: Alignment.centerRight,
+                child: Container(
+                  width: 200,
+                  height: 200,
+                  color: Colors.yellow,
+                ),
+              ),
+              Positioned(
+                right: 50,
+                top: 200,
+                child: Container(
+                  width: 120,
+                  height: 120,
+                  color: Colors.blue,
+                ),
+              ),
+            ],
           ),
           backgroundColor: Colors.blueGrey,
           floatingActionButton: FloatingActionButton(
