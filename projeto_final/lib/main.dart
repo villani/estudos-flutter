@@ -25,46 +25,43 @@ class Autenticacao extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Autenticacao'),
+          title: const Center(child: Text('Autenticação')),
           backgroundColor: Colors.orange,
         ),
-        body: Column(
-          children: [
-            const Expanded(
-              child: SizedBox(
-                width: 250,
-                child: TextField(
-                  autofocus: true,
-                  decoration: InputDecoration(labelText: 'Login: '),
-                ),
-              ),
-            ),
-            const Expanded(
-              flex: 1,
-              child: SizedBox(
-                width: 250,
-                child: TextField(
-                  autofocus: true,
-                  decoration: InputDecoration(labelText: 'Senha: '),
-                ),
-              ),
-            ),
-            Expanded(
-              flex: 2,
-              child: Center(
-                child: ElevatedButton(
-                  child: const Text('Autenticar'),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Principal()),
-                    );
-                  },
-                ),
-              ),
-            ),
-          ],
-        ));
+        body: Container(
+            width: double.infinity,
+            height: double.infinity,
+            margin: const EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
+            child: Column(
+              children: [
+                SizedBox( 
+                  width: 100,
+                  child: Image.asset('imagens/logo.jpg')),
+                const Padding(
+                    padding: EdgeInsets.all(15),
+                    child: TextField(
+                      autofocus: true,
+                      decoration: InputDecoration(labelText: 'Login: '),
+                    )),
+                const Padding(
+                    padding: EdgeInsets.all(15),
+                    child: TextField(
+                      decoration: InputDecoration(labelText: 'Senha: '),
+                    )),
+                Padding(
+                    padding: const EdgeInsets.all(15),
+                    child: ElevatedButton(
+                      child: const Text('Autenticar'),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Principal()),
+                        );
+                      },
+                    )),
+              ],
+            )));
   }
 }
 
@@ -73,16 +70,69 @@ class Principal extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Painel de Controle"),
+        title: const Center(child: Text("Perfil")),
         backgroundColor: Colors.orange,
       ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: const Text('Sair'),
-        ),
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        margin: const EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
+        child: Row(children: [
+          Expanded(
+              flex: 2,
+              child: Align(
+                  alignment: Alignment.topLeft,
+                  child: Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Image.asset('imagens/perfil.jpg')))),
+          const Expanded(
+              flex: 2,
+              child: Column(
+                children: [
+                  Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Nome:',
+                        textDirection: TextDirection.ltr,
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      )),
+                  Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Leonardo Villani',
+                        textDirection: TextDirection.ltr,
+                      )),
+                  Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        ' ',
+                        textDirection: TextDirection.ltr,
+                      )),
+                  Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Posição:',
+                        textDirection: TextDirection.ltr,
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      )),
+                  Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Docente',
+                        textDirection: TextDirection.ltr,
+                      )),
+                ],
+              )),
+          Align(
+              alignment: Alignment.bottomLeft,
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: const Text('Sair'),
+              )),
+        ]),
       ),
     );
   }
